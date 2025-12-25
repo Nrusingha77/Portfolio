@@ -1,4 +1,8 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 @import "tw-animate-css";
 
 @layer base {
@@ -83,5 +87,3 @@
   background-size: 400px 300px;
   animation: twinkle 4s ease-in-out infinite alternate;
 }
-
-

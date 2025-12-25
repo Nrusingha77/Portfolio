@@ -79,7 +79,7 @@ const Card = React.memo(({ card, onClick }) => {
                 className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110"
             ></div>
             <div className="absolute inset-0 z-10 grid place-content-center">
-                <p className="bg-gradient-to-br from-white/20 to-white/0 p-4 md:p-8 text-3xl md:text-6xl font-black uppercase text-slate-500 backdrop-blur-lg rounded-xl">
+                <p className="bg-gradient-to-br from-white/20 to-white/0 p-4 md:p-8 text-3xl md:text-6xl font-black uppercase text-amber-100 backdrop-blur-lg rounded-xl">
                     {card.title}
                 </p>
             </div>
