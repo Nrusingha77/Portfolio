@@ -139,7 +139,7 @@ const Home = () => {
             className='p-2 md:p-4 flex flex-col items-center max-w-2xl text-center md:text-left'
           >
             <motion.div variants={itemVariants} className='flex items-center gap-2'>
-              <span className="text-xl md:text-2xl font-bold">Hey!!</span>
+              <span className="text-xl text-amber-100 md:text-2xl font-bold">Hey!!</span>
               <DotLottieReact
                 className="w-[40px] h-[40px] md:w-[2vw] md:h-[2vw]"
                 src="https://lottie.host/c9a20043-a43a-4f86-adec-b5b433eae2a2/SYQhEQVSAj.lottie"
