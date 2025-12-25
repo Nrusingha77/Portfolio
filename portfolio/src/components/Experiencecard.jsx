@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { motion } from "framer-motion"
 import { useNavigate } from 'react-router-dom'
+import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 
 
@@ -24,35 +25,23 @@ const cardVariants = {
 };
 
 const Experiencecard = ({ onClose }) => {
-  const cardRef = useRef(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (cardRef.current && !cardRef.current.contains(event.target)) {
-        onClose();
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [onClose]);
 
   const handleLearnMore = () => {
     onClose(); // Close the card
     navigate('/experience'); // Navigate to experience page
   };
 
-  return (
-    <motion.div
-      ref={cardRef}
-      variants={cardVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      className='fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50'
-    >
-      <div className="card bg-gradient-to-r from-purple-900 to-indigo-800 w-[90vw] max-w-md md:w-96 shadow-xl rounded-xl overflow-hidden border border-purple-500/20">
+  return createPortal(
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={onClose}>
+      <motion.div
+        variants={cardVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        onClick={(e) => e.stopPropagation()}
+        className="card w-full max-w-md bg-gradient-to-r from-purple-900 to-indigo-800 shadow-xl rounded-xl overflow-hidden border border-purple-500/20"
+      >
         <figure className="relative h-48">
           <img
             className="w-full h-full object-cover"
@@ -86,8 +75,10 @@ const Experiencecard = ({ onClose }) => {
             </motion.button>
           </div>
         </motion.div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
+    ,
+    document.body
   )
 }
 

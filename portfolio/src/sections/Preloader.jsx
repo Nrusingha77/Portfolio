@@ -11,10 +11,6 @@ const words = [
   "Guten Tag",
   "Hola",
   "Salam",
-  "Konnichiwa",
-  "Annyeong",
-  "Zdravstvuyte",
-  "Merhaba",
   "Sawasdee",
   "Namaste"
 ]
