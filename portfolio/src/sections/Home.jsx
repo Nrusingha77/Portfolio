@@ -97,7 +97,7 @@ const Home = () => {
   }
 
   const handleDoubleClick = () => {
-    const resume = '/cv0001.pdf';
+    const resume = '/cv00001.pdf';
     window.open(resume, '_blank');
   }
 
@@ -151,9 +151,9 @@ const Home = () => {
               transition={{ ease: "easeInOut", duration: 0.5 }}
               variants={itemVariants} className='flex flex-col items-center gap-2'>
               <div className='flex items-center gap-2.5'>
-                <span className='text-amber-400 text-3xl md:text-5xl'>𝒊</span><span className="text-xl md:text-2xl">am</span>
+                <span className='text-amber-400 text-3xl md:text-5xl'>𝒊</span><span className="text-xl text-amber-100 md:text-2xl">am</span>
                 <div>
-                  <BubbleText className='text-center capitalize text-2xl md:text-4xl font-light text-[#08e6ff]' color={'rgb(223, 201, 32)'}>
+                  <BubbleText className='text-center capitalize text-2xl md:text-4xl font-light text-[#08e6ff]' color={'rgb(253 230 138)'}>
                     Nrusingha Prasada Khadanga
                   </BubbleText>
                 </div>
@@ -166,7 +166,7 @@ const Home = () => {
                 className='mt-3 max-w-prose px-4'
               >
                 <motion.p
-                  className='text-base leading-relaxed text-gray-200 mb-4'
+                  className='text-base leading-relaxed text-amber-100 mb-4'
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
@@ -189,7 +189,7 @@ const Home = () => {
                 </motion.p>
 
                 <motion.p
-                  className='text-base leading-relaxed text-gray-200 mb-4'
+                  className='text-base leading-relaxed text-amber-100 mb-4'
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
@@ -250,7 +250,7 @@ const Home = () => {
                 </motion.p>
 
                 <motion.p
-                  className='text-base leading-relaxed text-gray-200 mb-4'
+                  className='text-base leading-relaxed text-amber-100 mb-4'
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6, duration: 0.6 }}
@@ -275,7 +275,7 @@ const Home = () => {
                 </motion.p>
 
                 <motion.p
-                  className='text-base leading-relaxed text-gray-200 mb-4'
+                  className='text-base leading-relaxed text-amber-100 mb-4'
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8, duration: 0.6 }}
@@ -305,7 +305,7 @@ const Home = () => {
                 </motion.p>
 
                 <motion.p
-                  className='text-base leading-relaxed text-gray-200'
+                  className='text-base leading-relaxed text-amber-100'
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 1.0, duration: 0.6 }}
