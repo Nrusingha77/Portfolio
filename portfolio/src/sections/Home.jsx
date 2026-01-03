@@ -177,7 +177,7 @@ const Home = () => {
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    Computer Science Engineering
+                    Computer Science & Engineering
                     <motion.span
                       className='absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-red-400 to-pink-500 block'
                       initial={{ width: 0 }}
