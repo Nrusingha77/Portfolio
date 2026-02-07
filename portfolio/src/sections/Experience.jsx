@@ -45,7 +45,7 @@ const Experience = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <DetailItem icon="💼" label="Type" value="Internship" />
                         <DetailItem icon="📍" label="Location" value="Visakhapatnam, Andhra Pradesh, India" />
-                        <DetailItem icon="⏳" label="Duration" value="June 2024 - July 2024" />
+                        <DetailItem icon="⏳" label="Duration" value="May 2025 - July 2025" />
                         <DetailItem icon="💻" label="Mode" value="On-site" />
                     </div>
 

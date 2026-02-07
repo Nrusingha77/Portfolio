@@ -92,11 +92,11 @@ const About = () => {
          <RevealOnScroll>
            <TextScroll 
            text="SKILLS"
-           className={"text-6xl text-amber-100 font-bold"}
+           className={"text-4xl md:text-6xl text-amber-100 font-bold text-center md:text-left"}
            />
           <div className="pt-5">
             <CardCarousel
-              className="w-full h-24"
+              className="w-full h-16 md:h-24"
               divisionName="Programming Languages"
               images={images}
               autoplayDelay={2000}
@@ -105,7 +105,7 @@ const About = () => {
           </div>
           <div className='mt-1.5'>
           <CardCarousel
-              className="w-full h-24"
+              className="w-full h-16 md:h-24"
               divisionName="Frontend"
               images={images1}
               autoplayDelay={2000}
@@ -115,7 +115,7 @@ const About = () => {
 
           <div className='mt-1.5'>
           <CardCarousel
-              className="w-full h-24"
+              className="w-full h-16 md:h-24"
               divisionName="Backend & Database"
               images={images2}
               autoplayDelay={2000}
@@ -125,8 +125,8 @@ const About = () => {
 
            <div className='mt-1.5'>
           <CardCarousel
-              className="w-full h-24"
-              divisionName="Manchine Learning Libraries"
+              className="w-full h-16 md:h-24"
+              divisionName="Machine Learning Libraries"
               images={images3}
               autoplayDelay={2000}
               showNavigation={true}
@@ -136,7 +136,7 @@ const About = () => {
           
           <div className='mt-1.5'>
           <CardCarousel
-              className="w-full h-24"
+              className="w-full h-16 md:h-24"
               divisionName="Tools"
               images={images4}
               autoplayDelay={2000}
