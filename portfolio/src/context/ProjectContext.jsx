@@ -3,6 +3,237 @@ import React, { createContext, useContext } from 'react';
 const ProjectContext = createContext();
 
 export const projectData = {
+    0: {
+        id: 0,
+        title: "REAL TIME HIDDEN PATTERN DETECTION IN TIME SERIES DATA USING HYBRID DEEP LEARNING",
+        url: "/projectImg/real.png",
+        git: "https://github.com/Nrusingha77/QLSP-Quad-Lock-Sniper-Protocol",
+        description: `Project Overview
+
+Microstructure Intelligence Engine (QLSP) is a research-grade low-latency quantitative machine learning system developed to reconstruct institutional market behavior and order-flow toxicity using freely available Level-2 market data. The project explores how modern deep learning architectures, market microstructure theory, and ultra-low-latency systems engineering can be combined to approximate institutional trading intelligence without depending entirely on expensive proprietary Level-3 datasets.
+
+The core objective of the project was to design a scalable machine learning and systems-engineering pipeline capable of inferring hidden market activity such as liquidity absorption, spoofing behavior, aggressive order-flow pressure, iceberg order activity, and VPIN-like toxicity signals directly from public order book streams.
+
+Unlike traditional academic ML projects focused only on prediction accuracy, QLSP was engineered as a full-stack quantitative infrastructure platform integrating data ingestion, tensor engineering, model distillation, real-time inference, distributed runtime communication, and live visualization into a single research ecosystem.
+
+Problem Statement
+
+Institutional quantitative trading systems rely heavily on Level-3 (Market By Order) datasets to study hidden liquidity dynamics and order-flow toxicity. However, historical Level-3 datasets are extremely expensive and inaccessible for independent developers, students, and small research teams.
+
+The major challenge addressed by QLSP was:
+
+How can institutional-grade order-flow intelligence be reconstructed from retail-accessible Level-2 data?
+Can teacher–student knowledge distillation transfer hidden market microstructure behavior into a lightweight inference model?
+Can this entire pipeline operate under strict low-latency constraints using a production-grade runtime architecture?
+
+The project was designed as an experimental research platform attempting to bridge the gap between institutional quantitative infrastructure and open-source accessible tooling.
+
+System Architecture
+
+QLSP follows a split-brain architecture:
+
+Python handles machine learning research, tensor generation, feature engineering, and knowledge distillation.
+Rust powers the ultra-low-latency runtime inference engine.
+
+This architecture was intentionally designed to separate flexible ML experimentation from deterministic runtime execution.
+
+The runtime stack integrates:
+
+Rust
+Tokio asynchronous runtime
+Polars DataFrames
+ONNX Runtime
+WebSocket streaming
+memmap2
+SPSC zero-copy shared memory over /dev/shm
+
+The communication pipeline between Python and Rust uses lock-free Single Producer Single Consumer (SPSC) shared-memory buffers to eliminate unnecessary serialization and reduce memory-copy overhead during runtime inference.
+
+The frontend visualization layer was built using React and TypeScript and designed to provide real-time monitoring of toxicity predictions, confidence scores, runtime latency, streaming tensor states, and inference activity through WebSocket-based communication.
+
+Machine Learning Pipeline
+
+The machine learning system is based on teacher–student knowledge distillation.
+
+Teacher Model
+
+The teacher model uses a Temporal Convolutional Network (TCN) trained on real and synthetic Level-3 market microstructure signals. The teacher learns hidden market behaviors including:
+
+Order-flow imbalance
+Liquidity absorption
+Queue pressure
+Trade aggressiveness
+VPIN-like toxicity dynamics
+Volatility bursts
+Institutional execution patterns
+
+Initially, the project relied on synthetic data generation and limited Databento access due to the high cost of historical Market By Order (MBO) datasets. Later, the architecture evolved into a fully automated Level-3 recording infrastructure using Coinbase WebSocket streams and continuous event capture pipelines.
+
+Student Model
+
+The student model combines:
+
+DeepLOB
+Temporal Fusion Transformer (TFT)
+
+The student receives only Level-2 order book tensors and attempts to reconstruct the hidden institutional behavior learned by the teacher.
+
+Strict tensor contracts were implemented:
+
+Student Tensor: (B,T,42)
+Teacher Tensor: (B,T,100)
+
+The tensors contain engineered microstructure features such as:
+
+Order-flow imbalance
+Rolling buy/sell pressure
+VPIN proxy signals
+Liquidity imbalance
+Volume clustering
+Absorption metrics
+Net market pressure
+
+The system uses knowledge distillation through torchdistill to transfer latent market intelligence from teacher to student.
+
+Real-Time Data Infrastructure
+
+One of the most critical engineering challenges in the project was acquiring usable Level-3 market data without relying on expensive institutional vendors.
+
+To solve this, the project implemented a continuous real-time recording infrastructure using:
+
+Coinbase WebSocket
+cryptofeed
+Dockerized recorder services
+Oracle Cloud Always Free VM
+ArcticDB / Parquet time-series storage
+
+The recorder continuously captures:
+
+Add events
+Cancel events
+Modify events
+Trade executions
+
+The datasets are partitioned and stored in Parquet format for efficient downstream training and tensor generation.
+
+This architecture enables continuous dataset accumulation and periodic retraining workflows without depending entirely on proprietary market data providers.
+
+Runtime Inference Engine
+
+The final runtime system was implemented entirely in Rust and optimized for near real-time inference.
+
+The runtime pipeline includes:
+
+Tensor construction
+Polars-based preprocessing
+ONNX Runtime inference
+Shared-memory communication
+WebSocket broadcasting
+
+The engine achieved approximately 20–30 ms inference latency while maintaining validated PyTorch–ONNX numerical consistency of 6.85e-7.
+
+Several low-latency optimizations were implemented:
+
+Memory pre-allocation
+Vectorized tensor processing
+Schema validation
+Zero-copy shared-memory transfer
+Runtime contract enforcement
+
+The runtime architecture was designed to support future integration into real-time trading and monitoring systems.
+
+Engineering Challenges and Risk Mitigation
+
+The project involved multiple high-risk engineering and research challenges.
+
+Tensor Contract Mismatch
+
+One major risk involved silent tensor shape corruption between training and runtime systems. This was mitigated using strict schema validation, tensor contract enforcement, and runtime shape verification.
+
+Normalization Leakage
+
+Another major issue involved normalization leakage between training and inference pipelines. This was mitigated by serializing train-time normalization statistics and enforcing deterministic preprocessing across all runtime environments.
+
+Synthetic Data Anti-Correlation
+
+The project discovered anti-correlation behavior in synthetic datasets during early training experiments. Instead of hiding the issue, the behavior was mathematically documented and analyzed as a data-quality limitation rather than a coding failure.
+
+Real-Time Infrastructure Stability
+
+Continuous market recording pipelines introduced risks including stale WebSocket streams, partial writes, and runtime instability. The system mitigated these risks through:
+
+Batch-buffered writes
+Scheduled flush services
+Docker auto-restart policies
+Runtime validation checks
+Failure recovery logic
+Limitations
+
+QLSP remains a research-focused system and several limitations were identified during development.
+
+True historical institutional-grade Level-3 datasets remain expensive and difficult to acquire.
+Market microstructure patterns are highly regime-dependent and continuously evolving.
+Synthetic supervision cannot perfectly replicate institutional execution behavior.
+Runtime latency remains constrained by public API and network limitations.
+The system is designed primarily for research and experimentation rather than live financial execution.
+
+These limitations were documented intentionally to maintain research transparency and realistic system evaluation.
+
+Research Focus and Final Outcome
+
+QLSP evolved from a simple experimental ML notebook into a complete quantitative research platform combining:
+
+Machine learning
+Quantitative finance
+Market microstructure theory
+Real-time distributed systems
+Low-latency infrastructure engineering
+
+The project demonstrates how institutional-style market intelligence systems can be approximated using open-source tooling, scalable architectures, and modern ML techniques under real-world infrastructure and financial constraints.
+
+Beyond prediction accuracy, the project emphasized system reliability, engineering discipline, modular architecture, and scalable runtime design, making it both a machine learning research project and a complete systems-engineering case study.`,
+        technologies: [   "Rust",
+    "Python",
+    "PyTorch",
+    "ONNX Runtime",
+    "ONNX",
+    "DeepLOB",
+    "Temporal Fusion Transformer (TFT)",
+    "Temporal Convolutional Network (TCN)",
+    "torchdistill",
+    "Polars",
+    "Tokio",
+    "memmap2",
+    "SPSC Shared Memory",
+    "/dev/shm",
+    "React",
+    "TypeScript",
+    "WebSocket",
+    "Docker",
+    "Oracle Cloud",
+    "ArcticDB",
+    "Parquet",
+    "cryptofeed",
+    "Coinbase WebSocket API",
+    "KuCoin API",
+    "Pandas",
+    "NumPy",
+    "PyArrow",
+    "Git",
+    "GitHub",
+    "Linux",
+    "REST API",
+    "Knowledge Distillation",
+    "Market Microstructure",
+    "VPIN",
+    "Time-Series Machine Learning",
+    "Low-Latency Systems",
+    "Quantitative Finance",
+    "Tensor Engineering",
+    "Async Runtime",
+    "Real-Time Streaming",
+    "Zero-Copy Memory Architecture"]
+    },
     1: {
         id: 1,
         title: "E-COMMERCE UI",
