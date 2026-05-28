@@ -97,7 +97,7 @@ const Home = () => {
   }
 
   const handleDoubleClick = () => {
-    const resume = '/cv00001.pdf';
+    const resume = '/Nrusingha-Prasada-Khadanga-CV.pdf';
     window.open(resume, '_blank');
   }
 
